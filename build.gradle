@@ -2,7 +2,7 @@
 buildscript {
     ext {
         //Kotlin
-        core_ktx = "1.8.0"
+        core_ktx = "1.9.0"
         //Lifecycle
         lifecycle_version = "2.3.1"
         lifecycle_version_compiler = "2.1.0"
