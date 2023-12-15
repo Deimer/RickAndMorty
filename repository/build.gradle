@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.testvass.datasource"
+    namespace = "com.testvass.repository"
     compileSdk = 33
 
     defaultConfig {
@@ -16,7 +16,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            minifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
