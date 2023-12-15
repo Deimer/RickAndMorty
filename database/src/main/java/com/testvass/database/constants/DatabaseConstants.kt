@@ -33,5 +33,6 @@ object DatabaseConstants {
         const val AIR_DATE = "air_date"
         const val EPISODE = "episode"
         const val CHARACTERS = "characters"
+        const val IS_FAVORITE = "isFavorite"
     }
 }
