@@ -33,7 +33,7 @@ data class CharacterEntity(
     @ColumnInfo(name = Columns.IMAGE)
     val image: String,
     @ColumnInfo(name = Columns.EPISODES)
-    val episodes: List<String>,
+    val episodes: String,
     @ColumnInfo(name = Columns.URL)
     val url: String,
     @ColumnInfo(name = Columns.CREATED)
