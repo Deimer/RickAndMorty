@@ -54,6 +54,6 @@ dependencies {
     api "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
     //Tests
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    testApi("junit:junit:4.13.2")
+    androidTestApi("androidx.test.ext:junit:1.1.5")
 }

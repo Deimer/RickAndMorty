@@ -22,6 +22,18 @@ android {
                 "proguard-rules.pro"
             )
         }
+        debug {
+            debuggable = true
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", URL_DEBUG
+        }
+        release {
+            debuggable = false
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+            buildConfigField "String", "BASE_URL", URL_RELEASE
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
@@ -33,11 +45,14 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    //Kotlin core
+    api "androidx.core:core-ktx:$core_ktx"
+    //Retrofit
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.okhttp3:logging-interceptor:$okhttp_interceptor_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_converter_gson_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_adapter_version"
+    //Tests
+    testApi("junit:junit:4.13.2")
+    androidTestApi("androidx.test.ext:junit:1.1.5")
 }
