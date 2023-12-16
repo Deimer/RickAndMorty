@@ -1,6 +1,9 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -9,6 +12,10 @@ android {
 
     defaultConfig {
         minSdk = 24
+
+        buildFeatures {
+            buildConfig = true
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -52,6 +59,9 @@ dependencies {
     api "com.squareup.okhttp3:logging-interceptor:$okhttp_interceptor_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_converter_gson_version"
     api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_adapter_version"
+    //Hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:$hilt_version"
     //Tests
     testApi("junit:junit:4.13.2")
     androidTestApi("androidx.test.ext:junit:1.1.5")
