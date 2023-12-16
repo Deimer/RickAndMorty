@@ -1,12 +1,11 @@
 package com.testvass.network.dto.response
 
 import com.google.gson.annotations.SerializedName
-import com.testvass.network.dto.CharacterDTO
 import com.testvass.network.dto.InfoDTO
 
-data class ResponseCharacterDTO(
+data class BaseResponseDTO<T>(
     @SerializedName("info")
     val info: InfoDTO,
     @SerializedName("results")
-    val results: List<CharacterDTO>
+    val results: T
 )
