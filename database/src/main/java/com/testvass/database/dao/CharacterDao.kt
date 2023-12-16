@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
 import com.testvass.database.constants.DatabaseConstants.Columns.ID
+import com.testvass.database.constants.DatabaseConstants.Columns.NAME
 import com.testvass.database.constants.DatabaseConstants.Tables.CHARACTER_TABLE
 import com.testvass.database.entities.CharacterEntity
 
@@ -14,7 +15,7 @@ import com.testvass.database.entities.CharacterEntity
 interface CharacterDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(character: CharacterEntity)
+    suspend fun insert(characters: List<CharacterEntity>)
 
     @Update
     suspend fun update(character: CharacterEntity)
@@ -29,5 +30,8 @@ interface CharacterDao {
     suspend fun fetchAll(): List<CharacterEntity>
 
     @Query("SELECT * FROM $CHARACTER_TABLE WHERE $ID = :characterId")
-    suspend fun fetchByCharacterId(characterId: Int): CharacterEntity
+    suspend fun fetchById(characterId: Int): CharacterEntity
+
+    @Query("SELECT * FROM $CHARACTER_TABLE WHERE $NAME LIKE :name")
+    suspend fun fetchByName(name: String): List<CharacterEntity>
 }
