@@ -16,6 +16,7 @@
     <dimen name="dimen_dp_26">26dp</dimen>
     <dimen name="dimen_dp_40">40dp</dimen>
     <dimen name="dimen_dp_56">56dp</dimen>
+    <dimen name="dimen_dp_100">100dp</dimen>
 
     <dimen name="dimen_height_card">120dp</dimen>
     <dimen name="dimen_margin_card">16dp</dimen>
