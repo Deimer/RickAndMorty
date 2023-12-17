@@ -1,11 +1,14 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-android")
+    id("dagger.hilt.android.plugin")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     namespace = "com.testvass.rickandmorty"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.testvass.rickandmorty"
@@ -13,17 +16,24 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        buildFeatures {
+            buildConfig = true
+            viewBinding = true
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
-        release {
+        debug {
+            debuggable = true
             minifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable = false
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     compileOptions {
@@ -36,12 +46,30 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    //Module
+    api project(path: ':usecase')
+    //Kotlin core
+    api "androidx.core:core-ktx:$core_ktx"
+    //Hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    annotationProcessor "com.google.dagger:hilt-android-compiler:$hilt_version"
+    //Design
+    api "androidx.appcompat:appcompat:1.6.1"
+    api "com.google.android.material:material:1.10.0"
+    api 'androidx.constraintlayout:constraintlayout:2.1.4'
+    //AndroidX legacy
+    api "androidx.legacy:legacy-support-v4:1.0.0"
+    //Animation
+    api "com.airbnb.android:lottie:$lottie_version"
+    //Media
+    api "io.coil-kt:coil:$coil_version"
+    //Lifecycle ktx
+    api "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version_livedata"
+    api "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version_livedata"
+    //Navigation
+    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    api "androidx.navigation:navigation-ui-ktx:$nav_version"
+    api "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    //Tests
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
