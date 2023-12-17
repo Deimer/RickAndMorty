@@ -1,0 +1,55 @@
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
+}
+
+android {
+    namespace = "com.testvass.usecase"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+
+        buildFeatures {
+            buildConfig = true
+        }
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
+    }
+
+    buildTypes {
+        debug {
+            debuggable = true
+            minifyEnabled = false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        release {
+            debuggable = false
+            minifyEnabled = true
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
+
+dependencies {
+    //Module
+    api project(path: ':repository')
+    //Kotlin core
+    api "androidx.core:core-ktx:$core_ktx"
+    //Hilt
+    api "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+    //Tests
+    testApi("junit:junit:4.13.2")
+    androidTestApi("androidx.test.ext:junit:1.1.5")
+}

@@ -1,3 +1,17 @@
 <resources>
-    <string name="app_name">RickAndMorty</string>
+
+    <string name="app_name">Rick And Morty</string>
+
+    <string name="title_welcome">Technical Test Android</string>
+    <string name="legend_welcome">A guide application to learn about the different characters that make up the great Rick And Morty series.</string>
+    <string name="start">Start</string>
+    <string name="date_created">Date created: %1$s</string>
+    <string name="origin">Origin: %1$s</string>
+    <string name="gender">Gender: %1$s</string>
+    <string name="specie">Specie: %1$s</string>
+    <string name="status">Status: %1$s</string>
+    <string name="total_episodes">Total episodes: %1$s</string>
+    <string name="location">Location: %1$s</string>
+    <string name="character_image_big">characterImageBig</string>
+
 </resources>

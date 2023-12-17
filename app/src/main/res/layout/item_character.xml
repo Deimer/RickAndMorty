@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_container"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_height_card"
+    android:layout_marginTop="@dimen/dimen_dp_6"
+    android:layout_marginStart="@dimen/dimen_margin_card"
+    android:layout_marginEnd="@dimen/dimen_margin_card"
+    android:layout_marginBottom="@dimen/dimen_dp_6">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_character"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/dimen_dp_8"
+            app:cardCornerRadius="@dimen/dimen_dp_8"
+            app:layout_constraintWidth_percent=".3"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_view_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:srcCompat="@drawable/ic_launcher"/>
+
+        </androidx.cardview.widget.CardView>
+
+        <View
+            app:layout_constraintWidth_percent=".15"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_height="match_parent"
+            android:background="@drawable/bkg_view_decoration"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_character_name"
+            style="@style/TitleStyle"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_marginTop="@dimen/dimen_dp_8"
+            android:layout_marginStart="@dimen/dimen_dp_12"
+            android:layout_marginEnd="@dimen/dimen_dp_12"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cardview_character"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Character name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_origin_name"
+            style="@style/BodyStyle"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_marginTop="@dimen/dimen_dp_8"
+            android:layout_marginStart="@dimen/dimen_dp_12"
+            android:layout_marginEnd="@dimen/dimen_dp_12"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_character_name"
+            app:layout_constraintStart_toEndOf="@+id/cardview_character"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Origin" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_location"
+            style="@style/CaptionStyle"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_marginTop="@dimen/dimen_dp_8"
+            android:layout_marginStart="@dimen/dimen_dp_12"
+            android:layout_marginEnd="@dimen/dimen_dp_12"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_origin_name"
+            app:layout_constraintStart_toEndOf="@+id/cardview_character"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

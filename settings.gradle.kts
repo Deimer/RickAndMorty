@@ -15,4 +15,8 @@ dependencyResolutionManagement {
 
 rootProject.name = "RickAndMorty"
 include(":app")
- 
+include(":network")
+include(":database")
+include(":datasource")
+include(":repository")
+include(":usecase")
