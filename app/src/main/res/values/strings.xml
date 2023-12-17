@@ -1,3 +1,9 @@
 <resources>
+
     <string name="app_name">Rick And Morty</string>
+
+    <string name="title_welcome">Technical Test Android</string>
+    <string name="legend_welcome">A guide application to learn about the different characters that make up the great Rick And Morty series.</string>
+    <string name="start">Start</string>
+
 </resources>
