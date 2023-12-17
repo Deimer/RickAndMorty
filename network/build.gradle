@@ -54,7 +54,7 @@ dependencies {
     api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_adapter_version"
     //Hilt
     api "com.google.dagger:hilt-android:$hilt_version"
-    annotationProcessor "com.google.dagger:hilt-android-compiler:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
     //Tests
     testApi("junit:junit:4.13.2")
     androidTestApi("androidx.test.ext:junit:1.1.5")
