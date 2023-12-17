@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.testvass.repository.models.CharacterModel
 import com.testvass.rickandmorty.databinding.FragmentHomeBinding
@@ -37,11 +39,11 @@ class HomeFragment: Fragment() {
     }
 
     private fun setupView() {
-        initSubscriptionPhotos()
+        initSubscriptionCharacters()
         initSubscriptionErrors()
     }
 
-    private fun initSubscriptionPhotos() {
+    private fun initSubscriptionCharacters() {
         viewModel.fetchCharacters()
         viewModel.charactersLiveData().observe(viewLifecycleOwner) { characters ->
             setupRecyclerCharacters(characters)
@@ -68,7 +70,11 @@ class HomeFragment: Fragment() {
         }
     }
 
-    private fun openCharacterDetails(characterId: Int) {
-        println("characterId: $characterId")
+    private fun openCharacterDetails(characterId: Int, viewOne: View) {
+        val extras = FragmentNavigatorExtras(
+            viewOne to characterId.toString()
+        )
+        val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(characterId)
+        findNavController().navigate(action, extras)
     }
 }

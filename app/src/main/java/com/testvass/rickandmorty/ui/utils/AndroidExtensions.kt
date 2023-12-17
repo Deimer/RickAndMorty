@@ -9,8 +9,15 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.graphics.drawable.DrawableCompat
 import coil.load
+import coil.request.CachePolicy
 import com.google.android.material.snackbar.Snackbar
 import com.testvass.rickandmorty.R
+import com.testvass.rickandmorty.ui.utils.Constants.TAG_DATE_FORMAT_IN
+import com.testvass.rickandmorty.ui.utils.Constants.TAG_DATE_FORMAT_OUT
+import com.testvass.rickandmorty.ui.utils.Constants.TAG_DATE_FORMAT_OUT_SHORT
+import com.testvass.rickandmorty.ui.utils.Constants.TAG_DATE_UNKNOWN
+import java.text.SimpleDateFormat
+import java.util.Locale
 import java.util.concurrent.atomic.AtomicBoolean
 
 fun View.showOrHide(show: Boolean) {
@@ -93,8 +100,41 @@ class OnSingleClickListener(
 
 fun AppCompatImageView.loadImage(url: String, crossFade: Boolean = true) {
     this.load(url) {
+        memoryCachePolicy(CachePolicy.ENABLED)
+        diskCachePolicy(CachePolicy.ENABLED)
         crossfade(crossFade)
+        memoryCacheKey(url)
         placeholder(R.drawable.ic_launcher)
         error(R.drawable.ic_launcher)
+        fallback(R.drawable.ic_launcher)
     }
+}
+
+fun String?.toHumanDate(): String {
+    return this?.let {
+        val formatIn = SimpleDateFormat(TAG_DATE_FORMAT_IN, Locale.US)
+        val formatOut = SimpleDateFormat(TAG_DATE_FORMAT_OUT, Locale.US)
+        val date = formatIn.parse(this)
+        date?.let {
+            formatOut.format(date)
+        } ?: TAG_DATE_UNKNOWN
+    } ?: TAG_DATE_UNKNOWN
+}
+
+fun String?.toHumanDateShort(): String {
+    return this?.let {
+        val formatIn = SimpleDateFormat(TAG_DATE_FORMAT_IN, Locale.US)
+        val formatOut = SimpleDateFormat(TAG_DATE_FORMAT_OUT_SHORT, Locale.US)
+        val date = formatIn.parse(this.orEmpty())
+        date?.let {
+            formatOut.format(date)
+        } ?: TAG_DATE_UNKNOWN
+    } ?: TAG_DATE_UNKNOWN
+}
+
+object Constants {
+    const val TAG_DATE_FORMAT_IN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    const val TAG_DATE_FORMAT_OUT = "EEEE dd 'of' MMMM 'of' yyyy"
+    const val TAG_DATE_FORMAT_OUT_SHORT = "dd 'of' MMMM 'of' yyyy"
+    const val TAG_DATE_UNKNOWN = "Date: Unknown"
 }

@@ -30,7 +30,6 @@
                 android:id="@+id/image_view_photo"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="center"
                 tools:srcCompat="@drawable/ic_launcher"/>
 
         </androidx.cardview.widget.CardView>
@@ -57,28 +56,30 @@
             tools:text="Character name" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_character_date"
+            android:id="@+id/text_view_origin_name"
             style="@style/BodyStyle"
             android:layout_width="@dimen/dimen_zero"
             android:layout_marginTop="@dimen/dimen_dp_8"
             android:layout_marginStart="@dimen/dimen_dp_12"
             android:layout_marginEnd="@dimen/dimen_dp_12"
+            android:maxLines="1"
             app:layout_constraintTop_toBottomOf="@+id/text_view_character_name"
             app:layout_constraintStart_toEndOf="@+id/cardview_character"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="12 february 2022" />
+            tools:text="Origin" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_view_origin_name"
+            android:id="@+id/text_view_location"
             style="@style/CaptionStyle"
             android:layout_width="@dimen/dimen_zero"
             android:layout_marginTop="@dimen/dimen_dp_8"
             android:layout_marginStart="@dimen/dimen_dp_12"
             android:layout_marginEnd="@dimen/dimen_dp_12"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_character_date"
+            android:maxLines="1"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_origin_name"
             app:layout_constraintStart_toEndOf="@+id/cardview_character"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Origin" />
+            tools:text="Location" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

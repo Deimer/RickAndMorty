@@ -38,6 +38,10 @@ fun CharacterEntity.toModel(): CharacterModel {
         location = entity.locationName,
         image = entity.image,
         episodes = entity.episodes.split(","),
+        episodesNumber = entity.episodes.split(",").map { url ->
+            val episodeNumber = url.substringAfterLast('/').toInt()
+            "#$episodeNumber"
+        },
         url = entity.url,
         created = entity.created,
         isFavorite = entity.isFavorite
