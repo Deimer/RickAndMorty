@@ -20,6 +20,6 @@ interface ICharacterRepository {
     ): OnResult<CharacterModel>
 
     suspend fun fetchByName(
-        characterId: Int
-    ): OnResult<CharacterModel>
+        name: String
+    ): OnResult<List<CharacterModel>>
 }
