@@ -1,6 +1,6 @@
-# Rick And Morty
+# Rick And Morty App
 
-![image](https://github.com/Deimer/RickAndMorty/assets/5855547/59a55129-71ba-4288-a8d5-bb086425c938)
+https://github.com/Deimer/RickAndMorty/assets/5855547/73602c5b-b1e2-46cc-ae03-d3743cb5c46a
 
 
 Aplicación para preuba técnica - Documentación
