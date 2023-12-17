@@ -1,9 +1,126 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.RickAndMorty" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <style name="Theme.RickAndMorty" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/feldspar</item>
+        <item name="colorSecondaryVariant">@color/macaroni</item>
+        <item name="colorOnSecondary">@color/dark</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- Background color -->
+        <item name="android:windowBackground">@color/white</item>
+        <!-- Material Cardview style -->
+        <item name="materialCardViewStyle">@style/CardViewStyle</item>
     </style>
 
-    <style name="Theme.RickAndMorty" parent="Base.Theme.RickAndMorty" />
+    <!--////////////////////////////// Buttons style //////////////////////////////-->
+
+    <style name="BaseButton" parent="TextAppearance.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:paddingStart">@dimen/dimen_dp_24</item>
+        <item name="android:paddingEnd">@dimen/dimen_dp_24</item>
+    </style>
+
+    <!--XLarge Buttons-->
+
+    <style name="XLargeButton" parent="BaseButton">
+        <item name="android:layout_height">@dimen/dimen_height_buttons</item>
+    </style>
+
+    <style name="XLargeButton.Primary" parent="XLargeButton">
+        <item name="android:textColor">@color/coconut</item>
+        <item name="android:background">@drawable/bkg_button_primary</item>
+    </style>
+
+    <style name="XLargeButton.Secondary" parent="XLargeButton">
+        <item name="android:textColor">@color/coconut</item>
+        <item name="android:background">@drawable/bkg_button_secondary</item>
+    </style>
+
+    <!--////////////////////////////// Texts Styles //////////////////////////////-->
+
+    <!--Base Texts-->
+
+    <style name="BaseLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <!--Head Texts-->
+
+    <style name="HeadLabelStyle" parent="BaseLabelStyle">
+        <item name="android:layout_marginTop">@dimen/dimen_dp_26</item>
+        <item name="android:textColor">?attr/colorPrimaryVariant</item>
+        <item name="android:fontFamily">@font/alata</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Headline6</item>
+    </style>
+
+    <style name="TitleStyle" parent="HeadLabelStyle">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TitleStyle.Center" parent="TitleStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="SubtitleStyle" parent="HeadLabelStyle">
+        <item name="android:layout_marginTop">@dimen/dimen_dp_20</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="SubtitleStyle.Center" parent="SubtitleStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="BodyStyle" parent="HeadLabelStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+    </style>
+
+    <style name="BodyStyle.Center" parent="BodyStyle">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CaptionStyle" parent="HeadLabelStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/mist</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Caption</item>
+        <item name="android:padding">@dimen/dimen_zero</item>
+    </style>
+
+    <style name="CaptionStyle.Center" parent="CaptionStyle">
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!--////////////////////////////// Cardview Styles //////////////////////////////-->
+
+    <style name="CardViewStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="android:background">@color/cream</item>
+        <item name="android:foreground">?attr/selectableItemBackground</item>
+        <item name="cardBackgroundColor">@color/cream</item>
+        <item name="cardCornerRadius">@dimen/dimen_dp_12</item>
+        <item name="cardElevation">@dimen/dimen_dp_12</item>
+    </style>
+
+    <style name="CardViewStyle.Mini" parent="CardViewStyle">
+        <item name="cardElevation">@dimen/dimen_dp_6</item>
+    </style>
+
 </resources>
