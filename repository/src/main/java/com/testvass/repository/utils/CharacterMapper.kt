@@ -4,6 +4,29 @@ import com.testvass.database.entities.CharacterEntity
 import com.testvass.network.dto.CharacterDTO
 import com.testvass.repository.models.CharacterModel
 
+fun CharacterDTO.toModel(): CharacterModel {
+    val dto = this
+    return CharacterModel(
+        id = dto.id ?: 0,
+        name = dto.name.orEmpty(),
+        status = dto.status.orEmpty(),
+        species = dto.species.orEmpty(),
+        type = dto.type.orEmpty(),
+        gender = dto.gender.orEmpty(),
+        origin = dto.origin?.name.orEmpty(),
+        location = dto.location?.name.orEmpty(),
+        image = dto.image.orEmpty(),
+        episodes = dto.episodes ?: emptyList(),
+        episodesNumber = dto.episodes?.mapNotNull { url ->
+            val episodeNumber = url.substringAfterLast('/').toInt()
+            "#$episodeNumber"
+        } ?: emptyList(),
+        url = dto.url.orEmpty(),
+        created = dto.created.orEmpty(),
+        isFavorite = false
+    )
+}
+
 fun CharacterDTO.toEntity(): CharacterEntity {
     val dto = this
     return CharacterEntity(

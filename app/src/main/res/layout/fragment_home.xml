@@ -7,17 +7,49 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_characters"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardview_search"
         android:layout_width="@dimen/dimen_zero"
-        android:layout_height="@dimen/dimen_zero"
-        android:clipToPadding="false"
-        android:nestedScrollingEnabled="false"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_dp_8"
+        app:cardCornerRadius="@dimen/dimen_dp_8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <SearchView
+            android:id="@+id/search_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_dp_40"
+            android:layout_margin="@dimen/dimen_dp_8"
+            android:inputType="text|textCapWords"
+            android:searchHintIcon="@drawable/ic_search_dark"
+            android:searchIcon="@drawable/ic_search_light"
+            app:defaultQueryHint="@string/search"
+            app:queryHint="@string/search" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_zero"
+        android:layout_marginTop="@dimen/dimen_dp_8"
+        app:layout_constraintTop_toBottomOf="@+id/cardview_search"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:itemCount="8"
-        />
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_characters"
+            android:layout_width="@dimen/dimen_zero"
+            android:layout_height="@dimen/dimen_zero"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:layout_marginTop="@dimen/dimen_dp_12"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_character"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

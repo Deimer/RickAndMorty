@@ -53,7 +53,8 @@ class CharacterRepository @Inject constructor(
 
     override suspend fun fetchByName(name: String): OnResult<List<CharacterModel>> {
         return try {
-            val characters = characterLocalDataSource.fetchByName(name).map { it.toModel() }
+            val characters = characterRemoteDataSource.getCharacterByName(name).map { it.toModel() }
+            characterLocalDataSource.insert(characters.map { it.toEntity() })
             OnResult.Success(characters)
         } catch (ioException: IOException) {
             OnResult.Error(ioException)
