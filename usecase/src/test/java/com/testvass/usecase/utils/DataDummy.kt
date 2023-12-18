@@ -2,8 +2,8 @@ package com.testvass.usecase.utils
 
 import com.testvass.repository.models.CharacterModel
 
-fun characterModelDummy() = CharacterModel(
-    id = 1,
+fun characterModelDummy(id: Int = 1) = CharacterModel(
+    id = id,
     name = "Updated Character",
     status = "status",
     species = "species",
