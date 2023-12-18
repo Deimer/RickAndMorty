@@ -23,7 +23,7 @@ interface ApiService {
         @Path(PARAMETER_CHARACTER) characterId: Int
     ): CharacterDTO
 
-    @GET(CHARACTER_PATH)
+    @GET(CHARACTERS_PATH)
     suspend fun getCharacterByName(
         @Query(PARAMETER_NAME) name: String
     ): BaseResponseDTO<List<CharacterDTO>>

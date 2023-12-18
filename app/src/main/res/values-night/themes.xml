@@ -125,4 +125,18 @@
         <item name="cardElevation">@dimen/dimen_dp_12</item>
     </style>
 
+    <!--////////////////////////////// Fields Styles //////////////////////////////-->
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/silver</item>
+        <item name="android:textColorHint">@color/mist</item>
+        <item name="android:backgroundTint">@color/copper_crayola</item>
+        <item name="android:inputType">textCapSentences</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">18dp</item>
+    </style>
+
 </resources>
