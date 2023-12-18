@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.core.view.doOnPreDraw
 import androidx.recyclerview.widget.LinearLayoutManager.VERTICAL
 import androidx.fragment.app.activityViewModels
@@ -12,8 +13,10 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.testvass.repository.models.CharacterModel
+import com.testvass.rickandmorty.R
 import com.testvass.rickandmorty.databinding.FragmentHomeBinding
 import com.testvass.rickandmorty.ui.adapter.CharacterAdapter
+import com.testvass.rickandmorty.ui.utils.hideKeyboard
 import com.testvass.rickandmorty.ui.utils.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,13 +43,22 @@ class HomeFragment: Fragment() {
 
     private fun setupView() {
         initSubscriptionCharacters()
+        initSubscriptionLoading()
         initSubscriptionErrors()
+        setupSearchBar()
+        setupSwipeRefresh()
     }
 
     private fun initSubscriptionCharacters() {
         viewModel.fetchCharacters()
         viewModel.charactersLiveData().observe(viewLifecycleOwner) { characters ->
             setupRecyclerCharacters(characters)
+        }
+    }
+
+    private fun initSubscriptionLoading() {
+        viewModel.loadingLiveData().observe(viewLifecycleOwner) { show ->
+            binding.swipeRefresh.isRefreshing = show
         }
     }
 
@@ -76,5 +88,35 @@ class HomeFragment: Fragment() {
         )
         val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(characterId)
         findNavController().navigate(action, extras)
+    }
+
+    private fun setupSearchBar() {
+        with(binding) {
+            searchView.isIconifiedByDefault = false
+            searchView.queryHint = getString(R.string.search)
+            searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let { launchSearchByName(query) }
+                    return true
+                }
+                override fun onQueryTextChange(newText: String?): Boolean { return true }
+            })
+        }
+    }
+
+    private fun launchSearchByName(name: String) {
+        binding.searchView.hideKeyboard()
+        viewModel.fetchCharactersByName(name)
+    }
+
+    private fun setupSwipeRefresh() {
+        with(binding) {
+            swipeRefresh.setOnRefreshListener {
+                swipeRefresh.hideKeyboard()
+                searchView.setQuery("", false)
+                searchView.isIconified = true
+                viewModel.fetchCharacters()
+            }
+        }
     }
 }
